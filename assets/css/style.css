@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(97, 97, 238);
+  overflow: hidden;
+}
+
+.container {
+  position: relative;
+  width: 400px;
+}
