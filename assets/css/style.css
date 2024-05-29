@@ -15,18 +15,25 @@ body {
 
 .all-container {
   background-color: rgb(159, 155, 151);
+  display: flex;
+  margin: 20px;
+  border-radius: 20px;
+  width: 90%;
+  height: 90%;
 }
 
+/* container-1 */
 .container-1 {
   position: relative;
-  width: 400px;
-  height: 600px;
+  width: 500px;
+  height: 750px;
   background: rgba(22, 22, 22, 0.1);
   backdrop-filter: blur(50px);
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 20px;
   color: #fff;
+  margin: 10px;
 }
 
 .search-box {
@@ -139,4 +146,38 @@ body {
 .weather-details p {
   font-size: 14px;
   font-weight: 500;
+}
+
+/* container-2 10 days forecast */
+
+.container-2 {
+  position: relative;
+  width: 70%;
+  height: 250px;
+  background: rgba(22, 22, 22, 0.1);
+  backdrop-filter: blur(50px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  color: rgb(86, 82, 82);
+  margin: 10px;
+}
+
+.all-box {
+  border-top: 2px rgb(4, 0, 0) solid;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.forecast {
+  background-color: rgb(147, 204, 255);
+  justify-content: center;
+  padding: 5px;
+  margin: 5px;
+  height: 150px;
+  width: 100px;
+  border-radius: 15px;
+  text-align: center;
 }
