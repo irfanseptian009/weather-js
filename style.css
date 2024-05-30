@@ -171,7 +171,7 @@ body {
   justify-content: center;
 }
 
-.forecast {
+.box-forecast {
   background-color: rgb(147, 204, 255);
   justify-content: center;
   padding: 5px;
