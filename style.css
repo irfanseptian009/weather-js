@@ -1,183 +1,174 @@
+/* Import Google font - Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
-
 body {
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: rgb(66, 66, 247);
-  overflow: hidden;
+  background: #e3f2fd;
 }
-
-.all-container {
-  background-color: rgb(159, 155, 151);
-  display: flex;
-  margin: 20px;
-  border-radius: 20px;
-  width: 90%;
-  height: 90%;
-}
-
-/* container-1 */
-.container-1 {
-  position: relative;
-  width: 500px;
-  height: 750px;
-  background: rgba(22, 22, 22, 0.1);
-  backdrop-filter: blur(50px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 20px;
+h1 {
+  background: #5372f0;
+  font-size: 1.75rem;
+  text-align: center;
+  padding: 18px 0;
   color: #fff;
-  margin: 10px;
 }
-
-.search-box {
-  position: relative;
+.container {
+  display: flex;
+  gap: 35px;
+  padding: 30px;
+}
+.weather-input {
+  width: 550px;
+}
+.weather-input input {
+  height: 46px;
   width: 100%;
-  height: 55px;
+  outline: none;
+  font-size: 1.07rem;
+  padding: 0 17px;
+  margin: 10px 0 20px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.weather-input input:focus {
+  padding: 0 16px;
+  border: 2px solid #5372f0;
+}
+.weather-input .separator {
+  height: 1px;
+  width: 100%;
+  margin: 25px 0;
+  background: #bbbbbb;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-
-.search-box input {
-  position: absolute;
+.weather-input .separator::before {
+  content: "or";
+  color: #6c757d;
+  font-size: 1.18rem;
+  padding: 0 15px;
+  margin-top: -4px;
+  background: #e3f2fd;
+}
+.weather-input button {
   width: 100%;
-  height: 100%;
-  background: transparent;
-  border-radius: 10px;
-  font-size: 22px;
-  color: white;
-  font-weight: 500;
-  text-transform: uppercase;
-  padding: 0 48px 0 42px;
-}
-
-.search-box input::placeholder {
-  color: #fff;
-  text-transform: capitalize;
-}
-
-.search-box i {
-  position: absolute;
-  left: 10px;
-  font-size: 28px;
-}
-
-.search-box button {
-  position: absolute;
-  right: 0;
-  width: 40px;
-  background: transparent;
-  border: none;
-  font-size: 28px;
-  color: white;
-  padding: 0 40px 0 5px;
+  padding: 10px 0;
   cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #fff;
+  background: #5372f0;
+  transition: 0.2s ease;
 }
-
-.weather-box {
-  text-align: center;
-  margin: 40px 0;
+.weather-input .search-btn:hover {
+  background: #2c52ed;
 }
-
-.weather-box img {
-  width: 60%;
+.weather-input .location-btn {
+  background: #6c757d;
 }
-
-.weather-box .temperature {
-  position: relative;
-  font-size: 64px;
-  line-height: 1;
+.weather-input .location-btn:hover {
+  background: #5c636a;
+}
+.weather-data {
+  width: 100%;
+}
+.weather-data .current-weather {
+  color: #fff;
+  background: #5372f0;
+  border-radius: 5px;
+  padding: 20px 70px 20px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.current-weather h2 {
   font-weight: 700;
-  margin: 20px 0 6px -30px;
+  font-size: 1.7rem;
 }
-.weather-box .temperature span {
-  position: absolute;
-  font-size: 22px;
-  margin-left: 4px;
-}
-
-.weather-box .decription {
-  font-size: 22px;
+.weather-data h6 {
+  margin-top: 12px;
+  font-size: 1rem;
   font-weight: 500;
+}
+.current-weather .icon {
+  text-align: center;
+}
+.current-weather .icon img {
+  max-width: 120px;
+  margin-top: -15px;
+}
+.current-weather .icon h6 {
+  margin-top: -10px;
   text-transform: capitalize;
 }
-
-.weather-details {
-  position: absolute;
-  bottom: 40px;
-  left: 0;
-  width: 100%;
-  padding: 0 20px;
+.days-forecast h2 {
+  margin: 20px 0;
+  font-size: 1.5rem;
+}
+.days-forecast .weather-cards {
   display: flex;
+  gap: 20px;
+}
+.weather-cards .card {
+  color: #fff;
+  padding: 18px 16px;
+  list-style: none;
+  width: calc(100% / 5);
+  background: #6c757d;
+  border-radius: 5px;
+}
+.weather-cards .card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.weather-cards .card img {
+  max-width: 70px;
+  margin: 5px 0 -12px 0;
 }
 
-.weather-details .humidity,
-.weather-details .wind {
-  display: flex;
-  align-items: center;
-  width: 50%;
+@media (max-width: 1400px) {
+  .weather-data .current-weather {
+    padding: 20px;
+  }
+  .weather-cards {
+    flex-wrap: wrap;
+  }
+  .weather-cards .card {
+    width: calc(100% / 4 - 15px);
+  }
 }
-.weather-details .humidity {
-  padding-left: 20px;
-  justify-content: flex-end;
+@media (max-width: 1200px) {
+  .weather-cards .card {
+    width: calc(100% / 3 - 15px);
+  }
 }
-
-.weather-details .wind {
-  padding-right: 20px;
-  margin-right: 10px;
+@media (max-width: 950px) {
+  .weather-input {
+    width: 450px;
+  }
+  .weather-cards .card {
+    width: calc(100% / 2 - 10px);
+  }
 }
-
-.weather-details i {
-  font-size: 56px;
-  font-weight: 500px;
-}
-.weather-details span {
-  display: inline-block;
-  font-size: 22px;
-  font-weight: 500px;
-}
-
-.weather-details p {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* container-2 10 days forecast */
-
-.container-2 {
-  position: relative;
-  width: 70%;
-  height: 250px;
-  background: rgba(22, 22, 22, 0.1);
-  backdrop-filter: blur(50px);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  padding: 20px;
-  color: rgb(86, 82, 82);
-  margin: 10px;
-}
-
-.all-box {
-  border-top: 2px rgb(4, 0, 0) solid;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.box-forecast {
-  background-color: rgb(147, 204, 255);
-  justify-content: center;
-  padding: 5px;
-  margin: 5px;
-  height: 150px;
-  width: 100px;
-  border-radius: 15px;
-  text-align: center;
+@media (max-width: 750px) {
+  h1 {
+    font-size: 1.45rem;
+    padding: 16px 0;
+  }
+  .container {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+  .weather-input {
+    width: 100%;
+  }
+  .weather-data h2 {
+    font-size: 1.35rem;
+  }
 }
