@@ -31,22 +31,20 @@ async function getWeatherDetails(cityName, latitude, longitude) {
     const response = await fetch(WEATHER_API_URL);
     const data = await response.json();
 
-    // Process the weather data here
-    // For example:
+    // Process the weather
     const currentWeather = data.current; // Access current weather data
     const dailyForecast = data.daily; // Access daily forecast data
 
-    // Update your HTML elements with the relevant weather information
     currentWeatherDiv.innerHTML = `
-      <h2>${cityName}</h2>
-      <h6>Wind Speed: ${currentWeather.wind_speed_10m} m/s</h6>
-      <h6>Wind Direction: ${currentWeather.wind_direction_10m}°</h6>
-      <!-- Add other relevant information -->
+	<div class="details">
+	<h2>${cityName}</h2>
+	<h6>Wind Speed: ${currentWeather.wind_speed_10m} m/s</h6>
+	<h6> ${currentWeather.wind_speed_10m} m/s</h6>
+	<h6>${currentWeather.wind_direction_10m}°</h6>
+  </div>
     `;
 
-    // Update weather cards for the next five days
-    // You can loop through dailyForecast and create weather cards dynamically
-    // ...
+    // Update weather cards for the next seven days
   } catch (error) {
     alert("An error occurred while fetching the weather details!");
   }
