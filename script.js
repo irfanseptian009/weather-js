@@ -2,10 +2,10 @@ const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
 const currentWeatherDiv = document.querySelector(".current-weather");
 const weatherCardsDiv = document.querySelector(".weather-cards");
+
 const API_KEY = "ae02e446861bd64c7ae65f0dbaf5f215"; // API key for OpenWeatherMap API
 
 // get coordinate from open weather api
-
 async function getCityCoordinates() {
   const cityName = cityInput.value.trim();
   if (cityName === "") return;
@@ -30,6 +30,7 @@ async function getWeatherDetails(cityName, latitude, longitude) {
   try {
     const response = await fetch(WEATHER_API_URL);
     const data = await response.json();
+    console.log(data);
 
     // Process the weather
     const currentWeather = data.current; // Access current weather data
@@ -43,12 +44,23 @@ async function getWeatherDetails(cityName, latitude, longitude) {
 	<h6>${currentWeather.wind_direction_10m}°</h6>
   </div>
     `;
-
-    // Update weather cards for the next seven days
+    // process daily forecast
+    weatherCardsDiv.innerHTML = "";
+    let i = 0;
+    while (i < dailyForecast.time.length) {
+      weatherCardsDiv.innerHTML += `<li class="card">
+			<h3>${cityName}</h3>
+			<h6>${dailyForecast.temperature_2m_max[i]}</h6>
+			<h6>${dailyForecast.temperature_2m_min[i]}</h6>
+			</li>`;
+      i++;
+    }
   } catch (error) {
     alert("An error occurred while fetching the weather details!");
   }
 }
+
+// Create weather cards for the next seven days
 
 searchButton.addEventListener("click", getCityCoordinates);
 cityInput.addEventListener("keyup", (e) => e.key === "Enter" && getCityCoordinates());

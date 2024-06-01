@@ -8,28 +8,27 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="container">
-      <div class="weather-input">
-        <h3>Enter a City Name</h3>
-        <input
-          class="city-input"
-          type="text"
-          placeholder="E.g., New York, London, Tokyo"
-        />
-        <button class="search-btn">Search</button>
-        <div class="weather-data">
-          <div class="current-weather">
-            <div class="details">
-              <h2></h2>
-              <h6></h6>
-              <h6></h6>
-              <h6></h6>
-            </div>
+    <div class="weather-input">
+      <h3>Enter a City Name</h3>
+      <input class="city-input" type="text" placeholder="E.g., New York, London, Tokyo" />
+      <button class="search-btn">Search</button>
+      <session class="weather-data">
+        <!-- current weather -->
+        <div class="current-weather">
+          <div class="details">
+            <h2></h2>
+            <h6></h6>
+            <h6></h6>
+            <h6></h6>
           </div>
         </div>
-      </div>
-      <div class="days-forecast">
-        <h2>5-Day Forecast</h2>
+      </session>
+    </div>
+
+    <!--  seven days forecast -->
+    <div class="container">
+      <session class="days-forecast">
+        <h2>7-Day Forecast</h2>
         <ul class="weather-cards">
           <li class="card">
             <h3></h3>
@@ -37,44 +36,45 @@
             <h6></h6>
             <h6></h6>
           </li>
+        </ul>
+      </session>
+
+      <!-- hourly forecast -->
+      <sessions class="horly-frecast">
+        <h2>hourly forecast</h2>
+        <ul class="weather-cards">
           <li class="card">
             <h3></h3>
-            <h6></h6>
-            <h6></h6>
-            <h6></h6>
-          </li>
-          <li class="card">
-            <h3></h3>
-            <h6></h6>
-            <h6></h6>
-            <h6></h6>
-          </li>
-          <li class="card">
-            <h3></h3>
-            <h6></h6>
-            <h6></h6>
-            <h6></h6>
-          </li>
-          <li class="card">
-            <h3></h3>
-            <h6></h6>
-            <h6></h6>
-            <h6></h6>
-          </li>
-          <li class="card">
-            <h3></h3>
-            <h6></h6>
-            <h6></h6>
-            <h6></h6>
-          </li>
-          <li class="card">
-            <h3></h3>
-            <h6></h6>
             <h6></h6>
             <h6></h6>
           </li>
         </ul>
-      </div>
+      </sessions>
+
+      <section>
+        <div class="detail-weather">
+          <div class="uv-card">
+            <h2>uv index</h2>
+            <ul>
+              <li>
+                <h3>tes</h3>
+                <h6></h6>
+                <h6></h6>
+              </li>
+            </ul>
+          </div>
+          <div class="wind-card">
+            <h2>wind</h2>
+            <ul>
+              <li>
+                <h3>tes</h3>
+                <h6></h6>
+                <h6></h6>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </div>
   </body>
 </html>

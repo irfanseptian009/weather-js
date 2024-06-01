@@ -7,11 +7,15 @@
 
 body {
   display: flex;
+  margin-top: 0px;
   justify-content: center;
   min-height: 100vh;
   background-color: rgb(71, 15, 237);
   overflow: hidden;
+  align-items: center;
+  gap: 35px;
 }
+
 h1 {
   background: #5372f0;
   font-size: 1.75rem;
@@ -22,19 +26,20 @@ h1 {
 
 .container {
   background: rgb(65, 65, 227);
+  display: flex;
+  flex-direction: column;
   border: 2px solid rgba(245, 244, 248, 0.2);
   display: flex;
   gap: 35px;
-  height: 90%;
-  width: 90%;
+  height: 640px;
+  width: auto;
   padding: 30px;
-  margin-top: 30px;
   border-radius: 15px;
 }
 
 .weather-input {
-  width: 550px;
-  height: 650px;
+  height: auto;
+  width: auto;
   background: rgba(22, 22, 22, 0.1);
   backdrop-filter: blur(50px);
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -89,7 +94,7 @@ h1 {
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 20px 70px 20px 20px;
-  height: 380px;
+  height: 480px;
   display: flex;
   justify-content: space-between;
 }
@@ -120,8 +125,7 @@ h1 {
 }
 
 .days-forecast {
-  background-color: #617ade;
-  height: 200px;
+  height: 130px;
   width: 100%;
   border-radius: 15px;
 }
@@ -132,12 +136,10 @@ h1 {
 
 .weather-cards {
   border-top: 2px solid black;
-  padding-top: 10px;
 }
 
 .days-forecast .weather-cards {
   display: flex;
-  gap: 20px;
   justify-content: center;
 }
 
@@ -145,10 +147,11 @@ h1 {
   color: #fff;
   list-style: none;
   width: 100px;
-  height: 140px;
+  height: 120px;
   background: rgba(231, 218, 218, 0.1);
   backdrop-filter: blur(50px);
   border-radius: 15px;
+  margin: 5px;
 }
 
 .card {
@@ -159,4 +162,23 @@ h1 {
 
 .card img {
   max-width: 80px;
+}
+
+.detail-weather {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.uv-card {
+  height: 200px;
+  width: 360px;
+  background-color: #d4d9eb;
+  border-radius: 15px;
+}
+.wind-card {
+  height: 200px;
+  width: 360px;
+  background-color: #cdd2e5;
+  border-radius: 15px;
 }
