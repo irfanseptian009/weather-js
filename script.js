@@ -32,7 +32,6 @@ async function getWeatherDetails(cityName, latitude, longitude) {
   try {
     const response = await fetch(WEATHER_API_URL);
     const data = await response.json();
-    console.log(data);
 
     const currentWeather = data.current;
     const dailyForecast = data.daily;
@@ -40,10 +39,49 @@ async function getWeatherDetails(cityName, latitude, longitude) {
 
     // process for current weather
     currentWeatherDiv.innerHTML = `
+	<div class="current-weather">
       <div class="details">
         <h2>${cityName}</h2>
+		<img 
+		class="weather-icon" 
+		src=${wmo[currentWeather.weather_code].day.image} alt="Weather Icon" />
         <h6>Wind Speed: ${currentWeather.wind_speed_10m} m/s</h6>
         <h6>Wind Direction: ${currentWeather.wind_direction_10m}°</h6>
+		<div class="current-cards">
+		<div class="current-card">
+		  <h3>Humidity</h3>
+		  <ul>
+			<li>
+			  <h4>${currentWeather.relative_humidity_2m}</h4>
+			</li>
+		  </ul>
+		</div>
+		<div class="current-card">
+		  <h3>precipitation</h3>
+		  <ul>
+			<li>
+			  <h4>${currentWeather.precipitation}</h4>
+			</li>
+		  </ul>
+		</div>
+		<div class="current-card">
+		  <h3>Interval</h3>
+		  <ul>
+			<li>
+			  <h4>
+			  ${currentWeather.interval}</h4>
+			</li>
+		  </ul>
+		</div>
+		<div class="current-card">
+		  <h3>apparent temperature</h3>
+		  <ul>
+			<li>
+			  <h4>${currentWeather.apparent_temperature}</h4>
+			</li>
+		  </ul>
+		</div>
+	  </div>
       </div>
     `;
 
@@ -51,39 +89,42 @@ async function getWeatherDetails(cityName, latitude, longitude) {
     sevenDaysCardsDiv.innerHTML = "";
     for (let i = 0; i < dailyForecast.time.length; i++) {
       sevenDaysCardsDiv.innerHTML += `
-        <li class="card">
-          <h3>${cityName}</h3>
-          <h6>Max Temp: ${dailyForecast.temperature_2m_max[i]}</h6>
-          <h6>Min Temp: ${dailyForecast.temperature_2m_min[i]}</h6>
-        </li>`;
+    <li class="card">
+      <h3>${cityName}</h3>
+	  <img src=${wmo[dailyForecast.weather_code[i]].day.image} alt="Weather Icon" />
+      <h6>Max Temp: ${dailyForecast.temperature_2m_max[i]}</h6>
+      <h6>Min Temp: ${dailyForecast.temperature_2m_min[i]}</h6>
+    </li>`;
     }
 
     // process for hourly forecast
     hourlyCardsDiv.innerHTML = "";
     for (let i = 0; i < Math.min(7, hourlyForecast.time.length); i++) {
       hourlyCardsDiv.innerHTML += `
-        <li class="card">
-          <h6>Temp: ${hourlyForecast.temperature_2m[i]}</h6>
-          <h6>Humidity: ${hourlyForecast.relative_humidity_2m[i]}</h6>
-        </li>`;
+    <li class="card">
+	<img src=${wmo[hourlyForecast.weather_code[i]].day.image} alt="Weather Icon" />
+      <h6>Max Temp: ${dailyForecast.temperature_2m_max[i]}</h6>
+      <h6>Temp: ${hourlyForecast.temperature_2m[i]}</h6>
+      <h6>Humidity: ${hourlyForecast.relative_humidity_2m[i]}</h6>
+    </li>`;
+    }
 
-      // process for UV index
-      uvIndexCardDiv.innerHTML = `
+    // process for UV index
+    uvIndexCardDiv.innerHTML = `
 		<li>
 		<h3>${currentWeather.pressure_msl}</h3>
 		<h3>${currentWeather.surface_pressure}</h3>
 		</li>
 		</ul>
 	`;
-      //  process for wind directions
-      windCardDiv.innerHTML = `
+    //  process for wind directions
+    windCardDiv.innerHTML = `
 		<li>
 		<h3>${currentWeather.wind_direction_10m}</h3>
 		<h3>${currentWeather.wind_gusts_10m}</h3>
 		<h3>${currentWeather.wind_speed_10m}</h3>
 		</li>
 	`;
-    }
   } catch (error) {
     alert("An error occurred while fetching the weather details!");
   }

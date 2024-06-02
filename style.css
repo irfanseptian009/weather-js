@@ -162,6 +162,7 @@ h1 {
 
 .hourly-cards {
   display: flex;
+  border-top: 2px solid black;
 }
 
 .sevenDays-cards .card {
