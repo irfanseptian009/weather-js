@@ -1,11 +1,14 @@
 const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
 const currentWeatherDiv = document.querySelector(".current-weather");
-const weatherCardsDiv = document.querySelector(".weather-cards");
+const sevenDaysCardsDiv = document.querySelector(".sevenDays-cards");
+const hourlyCardsDiv = document.querySelector(".hourly-cards");
+const uvIndexCardDiv = document.querySelector(".uv-card");
+const windCardDiv = document.querySelector(".wind-card");
 
 const API_KEY = "ae02e446861bd64c7ae65f0dbaf5f215"; // API key for OpenWeatherMap API
 
-// get coordinate from open weather api
+// Get coordinates from API OpenWeatherMap
 async function getCityCoordinates() {
   const cityName = cityInput.value.trim();
   if (cityName === "") return;
@@ -23,44 +26,68 @@ async function getCityCoordinates() {
   }
 }
 
-// get weather details from open-meteor
-
+// Get data api from API Open-Meteo
 async function getWeatherDetails(cityName, latitude, longitude) {
-  const WEATHER_API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=wind_speed_10m,wind_direction_10m&hourly=temperature_2m,relative_humidity_2m&daily=weather_code,temperature_2m_max,temperature_2m_min`;
+  const WEATHER_API_URL = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,weather_code,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,relative_humidity_2m,weather_code,visibility,uv_index,is_day&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset,uv_index_max,uv_index_clear_sky_max&timezone=auto`;
   try {
     const response = await fetch(WEATHER_API_URL);
     const data = await response.json();
     console.log(data);
 
-    // Process the weather
-    const currentWeather = data.current; // Access current weather data
-    const dailyForecast = data.daily; // Access daily forecast data
+    const currentWeather = data.current;
+    const dailyForecast = data.daily;
+    const hourlyForecast = data.hourly;
 
+    // process for current weather
     currentWeatherDiv.innerHTML = `
-	<div class="details">
-	<h2>${cityName}</h2>
-	<h6>Wind Speed: ${currentWeather.wind_speed_10m} m/s</h6>
-	<h6> ${currentWeather.wind_speed_10m} m/s</h6>
-	<h6>${currentWeather.wind_direction_10m}°</h6>
-  </div>
+      <div class="details">
+        <h2>${cityName}</h2>
+        <h6>Wind Speed: ${currentWeather.wind_speed_10m} m/s</h6>
+        <h6>Wind Direction: ${currentWeather.wind_direction_10m}°</h6>
+      </div>
     `;
-    // process daily forecast
-    weatherCardsDiv.innerHTML = "";
-    let i = 0;
-    while (i < dailyForecast.time.length) {
-      weatherCardsDiv.innerHTML += `<li class="card">
-			<h3>${cityName}</h3>
-			<h6>${dailyForecast.temperature_2m_max[i]}</h6>
-			<h6>${dailyForecast.temperature_2m_min[i]}</h6>
-			</li>`;
-      i++;
+
+    // process for seven days forecast
+    sevenDaysCardsDiv.innerHTML = "";
+    for (let i = 0; i < dailyForecast.time.length; i++) {
+      sevenDaysCardsDiv.innerHTML += `
+        <li class="card">
+          <h3>${cityName}</h3>
+          <h6>Max Temp: ${dailyForecast.temperature_2m_max[i]}</h6>
+          <h6>Min Temp: ${dailyForecast.temperature_2m_min[i]}</h6>
+        </li>`;
+    }
+
+    // process for hourly forecast
+    hourlyCardsDiv.innerHTML = "";
+    for (let i = 0; i < Math.min(7, hourlyForecast.time.length); i++) {
+      hourlyCardsDiv.innerHTML += `
+        <li class="card">
+          <h6>Temp: ${hourlyForecast.temperature_2m[i]}</h6>
+          <h6>Humidity: ${hourlyForecast.relative_humidity_2m[i]}</h6>
+        </li>`;
+
+      // process for UV index
+      uvIndexCardDiv.innerHTML = `
+		<li>
+		<h3>${currentWeather.pressure_msl}</h3>
+		<h3>${currentWeather.surface_pressure}</h3>
+		</li>
+		</ul>
+	`;
+      //  process for wind directions
+      windCardDiv.innerHTML = `
+		<li>
+		<h3>${currentWeather.wind_direction_10m}</h3>
+		<h3>${currentWeather.wind_gusts_10m}</h3>
+		<h3>${currentWeather.wind_speed_10m}</h3>
+		</li>
+	`;
     }
   } catch (error) {
     alert("An error occurred while fetching the weather details!");
   }
 }
-
-// Create weather cards for the next seven days
 
 searchButton.addEventListener("click", getCityCoordinates);
 cityInput.addEventListener("keyup", (e) => e.key === "Enter" && getCityCoordinates());
