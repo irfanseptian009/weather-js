@@ -5,6 +5,7 @@
     <title>Weather App Project JavaScript</title>
     <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   </head>
   <body>
     <div class="weather-input">
@@ -16,12 +17,11 @@
         <div class="current-weather">
           <div class="details">
             <h2>halo</h2>
-            <h6>hao</h6>
-            <h6>halo</h6>
-            <h6>halo</h6>
+            <img src="" alt="" />
+            <h4 class="temperature">hao</h4>
+            <h4 class="description">halo</h4>
             <div class="current-cards">
               <div class="current-card">
-                <h3>Humidity</h3>
                 <ul>
                   <li>
                     <h4>test</h4>
@@ -61,10 +61,9 @@
     <!--  seven days forecast -->
     <div class="container">
       <session class="days-forecast">
-        <h2>7-Day Forecast</h2>
+        <h2><i class="bx bxs-calendar"></i> 7-DAY FORECAST</h2>
         <ul class="sevenDays-cards">
           <li class="card">
-            <h3></h3>
             <h6></h6>
             <h6></h6>
           </li>
@@ -72,8 +71,8 @@
       </session>
 
       <!-- hourly forecast -->
-      <sessions class="horly-frecasts">
-        <h2>hourly forecast</h2>
+      <sessions class="hourly-forecasts">
+        <h2><i class="bx bx-time-five"></i> HOURLY FORECAST 24 HOUR</h2>
         <ul class="hourly-cards">
           <li class="card">
             <h6></h6>
@@ -84,8 +83,8 @@
 
       <section>
         <div class="detail-weather">
-          <div class="uv-card">
-            <h2>Pressure</h2>
+          <div class="pressure-card">
+            <h2><i class="bx bxs-thermometer"></i>PRESSURE</h2>
             <ul>
               <li>
                 <h3></h3>
@@ -94,7 +93,12 @@
             </ul>
           </div>
           <div class="wind-card">
-            <h2>Wind</h2>
+            <h2><i class="bx bx-wind"></i> Wind</h2>
+            <img
+              src="assets/images/compass-3.png"
+              alt="compass"
+              style="height: 120px; width: 120px"
+            />
             <ul>
               <li>
                 <h3></h3>
