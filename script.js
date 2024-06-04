@@ -4,7 +4,7 @@ const currentWeatherDiv = document.querySelector(".current-weather");
 const sevenDaysCardsDiv = document.querySelector(".sevenDays-cards");
 const hourlyCardsDiv = document.querySelector(".hourly-cards");
 const pressureCardDiv = document.querySelector(".pressure-card");
-const windCardDiv = document.querySelector(".wind-card");
+const windCardDiv = document.querySelector(".winds-container");
 
 const API_KEY = "ae02e446861bd64c7ae65f0dbaf5f215"; // API key for OpenWeatherMap API
 
@@ -141,19 +141,31 @@ async function getWeatherDetails(cityName, latitude, longitude) {
 	`;
     //  process for wind directions
     windCardDiv.innerHTML = `
-	<h2><i class='bx bx-wind' ></i>WIND</h2>
-	<img
-	src="assets/images/compass-3.png"
-	alt="compass"
-	style="height: 120px; width: 120px"
-  	/>
-		<li>
-		<h3>${currentWeather.wind_direction_10m}°</h3>
-		<h3>${currentWeather.wind_gusts_10m}km/h</h3>
-		<h3>${currentWeather.wind_speed_10m}km/h</h3>
-		</li>
-	</ul>
-	`;
+	<div class="winds-container">
+
+	<ul>
+	<li>
+	  <h3>
+	  ${currentWeather.wind_direction_10m}°
+	  </h3>
+	  <h3>
+	  ${currentWeather.wind_gusts_10m}
+		<p>
+		  <span> km/h</span> <br />
+		  wind
+		</p>
+	  </h3>
+	  <h3>
+	  ${currentWeather.wind_speed_10m}
+		<p>
+		  <span> km/h</span> <br />
+		  wind
+		</p>
+	  </h3>
+	</li>
+  </ul>
+	  <img class="img-wind" src="assets/images/compass-3.png" alt="compass" />
+	</div>`;
   } catch (error) {
     alert("An error occurred while fetching the weather details!");
   }

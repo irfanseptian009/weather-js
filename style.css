@@ -363,6 +363,18 @@ h1 {
   border-radius: 15px;
 }
 
+.winds-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.img-wind {
+  width: 140px;
+  height: 140px;
+  margin-top: -20px;
+  margin-left: 50px;
+}
+
 .wind-card h2 {
   font-size: 15px;
   color: rgb(237, 220, 220);
@@ -370,4 +382,30 @@ h1 {
   text-align: start;
   margin-top: 15px;
   margin-left: 15px;
+}
+
+.wind-card li {
+  margin-top: 15px;
+  margin-left: 30px;
+  list-style: none;
+}
+.wind-card h3 {
+  display: flex;
+  text-align: start;
+  border-bottom: 2px solid black;
+  font-size: 30px;
+  width: 150px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: #fff;
+}
+
+.winds-container p {
+  font-size: 15px;
+  margin-left: 8px;
+  color: #fff;
+}
+
+.winds-container span {
+  color: rgb(152, 124, 124);
 }
