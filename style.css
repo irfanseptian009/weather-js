@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 body {
@@ -55,9 +56,9 @@ h1 {
 .weather-input h3 {
   color: rgb(255, 255, 255);
   font-family: Georgia, "Times New Roman", Times, serif;
-  text-align: center;
   margin-bottom: 10px;
   font-weight: lighter;
+  padding-bottom: 8px;
 }
 
 .weather-input input {
@@ -70,6 +71,7 @@ h1 {
   font-weight: 500;
   text-transform: uppercase;
   padding: 0 48px 0 42px;
+  text-align: center;
 }
 
 .weather-input input:focus {
@@ -169,27 +171,29 @@ h1 {
 }
 
 .current-card i {
-  color: blueviolet;
-  font-size: 30px;
+  color: rgb(160, 129, 255);
+  font-size: 40px;
   justify-content: start;
   font-weight: lighter;
 }
 
 .current-card h4 {
   font-size: 30px;
-  margin-bottom: -10px;
+  padding-top: -5px;
 }
 
 .current-card h3 {
-  font-size: small;
-  color: rgb(255, 195, 195);
+  font-size: 20px;
+  color: rgb(244, 255, 175);
+  margin-bottom: -8px;
 }
 
 .current-card h6 {
-  font-size: 10px;
+  font-size: 11px;
   text-align: start;
   padding-left: 10px;
-  color: rgb(121, 96, 96);
+  color: rgb(133, 133, 133);
+  margin-top: -2px;
 }
 
 .current-card {
@@ -334,17 +338,16 @@ h1 {
   padding: 10px;
   font-size: 20px;
   font-weight: bolder;
-  color: rgb(213, 209, 203);
+  color: rgb(231, 227, 221);
   font-family: serif;
-  margin-top: -20px;
   background: transparent;
   backdrop-filter: blur(50px);
   border-radius: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .pressure-card h2 {
-  font-size: 15px;
+  font-size: 20px;
   color: rgb(237, 220, 220);
   font-weight: lighter;
   text-align: start;
@@ -368,15 +371,8 @@ h1 {
   flex-direction: row;
 }
 
-.img-wind {
-  width: 140px;
-  height: 140px;
-  margin-top: -20px;
-  margin-left: 50px;
-}
-
 .wind-card h2 {
-  font-size: 15px;
+  font-size: 20px;
   color: rgb(237, 220, 220);
   font-weight: lighter;
   text-align: start;
@@ -392,20 +388,57 @@ h1 {
 .wind-card h3 {
   display: flex;
   text-align: start;
-  border-bottom: 2px solid black;
-  font-size: 30px;
+  font-size: 40px;
+  font-weight: lighter;
   width: 150px;
   padding-top: 5px;
   padding-bottom: 5px;
-  color: #fff;
+  color: rgb(255, 230, 230);
+  border-bottom: 2px solid rgb(204, 197, 197);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.winds-container p {
-  font-size: 15px;
-  margin-left: 8px;
-  color: #fff;
+.speed-wind {
+  margin-left: 5%;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
 }
-
+.gusts-wind {
+  margin-left: 5%;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+}
 .winds-container span {
   color: rgb(152, 124, 124);
+}
+
+.compass {
+  position: absolute;
+  margin-left: 245px;
+  margin-top: 24px;
+}
+
+.description-compass {
+  position: absolute;
+  text-align: center;
+  background-color: #727272;
+  font-size: 25px;
+  font-weight: bolder;
+  color: rgb(112, 199, 199);
+  height: 65px;
+  width: 65px;
+  padding-top: 15px;
+  padding-left: 5px;
+  border-radius: 100%;
+  border: 2px solid rgb(100, 95, 95);
+}
+
+.img-wind {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  position: relative;
+  margin-left: 20px;
+  margin-top: -20px;
+  opacity: 50%;
 }

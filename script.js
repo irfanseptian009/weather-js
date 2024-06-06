@@ -32,23 +32,68 @@ async function getWeatherDetails(cityName, latitude, longitude) {
   try {
     const response = await fetch(WEATHER_API_URL);
     const data = await response.json();
-
     const currentWeather = data.current;
     const dailyForecast = data.daily;
     const hourlyForecast = data.hourly;
+    const isDay = currentWeather.is_day;
 
     console.log(data);
+
+    // switch weather background image
+    const weatherCode = currentWeather.weather_code;
+    let backgroundImage;
+
+    switch (weatherCode) {
+      case 61: // Hujan ringan
+        backgroundImage = "url('/assets/images/hujan_ringan.jpg')";
+        break;
+      case 63: // Hujan sedang
+        backgroundImage = "url('/assets/images/hujan_sedang.jpg')";
+        break;
+      case 65: // Hujan lebat
+        backgroundImage = "url('/assets/images/hujan_lebat.jpg')";
+        break;
+      case 66: // Hujan ringan beku
+        backgroundImage = "url('/assets/images/hujan_ringan_beku.jpg')";
+        break;
+      case 67: // Hujan beku
+        backgroundImage = "url('/assets/images/hujan_beku.jpg')";
+        break;
+      case 0: // Clear sky
+        backgroundImage = "url('/assets/images/weather-4.jpg')";
+        break;
+      case 1: // Mostly clear
+        backgroundImage = "url('/assets/images/fix.jpg')";
+        break;
+      case 2: // Partly cloudy
+        backgroundImage = "url('/assets/images/weather-3.jpg')";
+        break;
+      default:
+        backgroundImage = "url('/assets/images/fix.jpg')";
+        break;
+    }
+
+    document.body.style.backgroundImage = backgroundImage;
 
     // process for current weather
     currentWeatherDiv.innerHTML = `
 	<div class="current-weather">
       <div class="details">
-        <h2>${cityName}</h2>
-		<img 
-		class="weather-icon" 
-		<img src=${wmo[currentWeather.weather_code].day.image} alt="Weather-Icon"/>
-        <h4  class="temperature">${currentWeather.apparent_temperature}°C</h4>
-        <h5 class="description">${wmo[currentWeather.weather_code].day.description}</h5>
+		<h2>${cityName}</h2>
+          <img
+            class="weather-icon"
+            src=${
+              isDay
+                ? wmo[currentWeather.weather_code].day.image
+                : wmo[currentWeather.weather_code].night.image
+            }
+            alt="Weather-Icon"/>
+          <h4 class="temperature">${currentWeather.apparent_temperature}°C</h4>
+          <h5 class="description">${
+            isDay
+              ? wmo[currentWeather.weather_code].day.description
+              : wmo[currentWeather.weather_code].night.description
+          }</h5>
 		<div class="current-cards">
 		<div class="current-card">
 		<i class="bx bx-water"></i>
@@ -66,7 +111,7 @@ async function getWeatherDetails(cityName, latitude, longitude) {
 		  <ul>
 			<li>
 			  <h4>${currentWeather.precipitation} mm"</h4>
-			  <h6>in last 24h <br>excepted in next 24h</h6>
+			  <h6>in last 24h excepted in next 24h</h6>
 			</li>
 		  </ul>
 		</div>
@@ -110,27 +155,35 @@ async function getWeatherDetails(cityName, latitude, longitude) {
     </li>`;
     }
 
-    // process for hourly forecast
+    // Process for hourly forecast
     hourlyCardsDiv.innerHTML = "";
     for (let i = 0; i < Math.min(24, hourlyForecast.time.length); i++) {
-      hourlyCardsDiv.innerHTML += `
-    <li class="card">
-	<h3>${hourlyForecast.time[i]}</h3>
-	<img src=${wmo[hourlyForecast.weather_code[i]].day.image} alt="Weather Icon" />
-      <h6>Temp: ${hourlyForecast.temperature_2m[i]}</h6>
-      <h6>Humidity: ${hourlyForecast.relative_humidity_2m[i]}</h6>
-    </li>`;
-    }
+      const time = hourlyForecast.time[i].slice(11, 22, 13, 14, 15);
+      const isDayHourly = hourlyForecast.is_day[i];
 
+      hourlyCardsDiv.innerHTML += `
+  <li class="card">
+    <h3>${time}</h3>
+    <img
+      class="weather-icon"
+      src=${
+        isDayHourly
+          ? wmo[hourlyForecast.weather_code[i]].day.image
+          : wmo[hourlyForecast.weather_code[i]].night.image
+      }
+      alt="Weather-Icon"/>
+    <h6>Temp: ${hourlyForecast.temperature_2m[i]}</h6>
+    <h6>Humidity: ${hourlyForecast.relative_humidity_2m[i]}</h6>
+  </li>`;
+    }
     // process for UV index
     pressureCardDiv.innerHTML = `
 	<h2><i class="bx bxs-thermometer"></i>PRESSURE</h2>
-
 	<ul>
 	<img
-	src="assets/images/pressure-2.png"
+	src="assets/images/pressure-3.png"
 	alt="pressure"
-	style="height: 120px; width: 180px; opacity:30%;"
+	style="height: 90px; width: 150px; opacity:30%;"
   />
 		<li>
 		<h3>${currentWeather.pressure_msl} hPa</h3>
@@ -143,29 +196,29 @@ async function getWeatherDetails(cityName, latitude, longitude) {
     windCardDiv.innerHTML = `
 	<div class="winds-container">
 
+
 	<ul>
 	<li>
-	  <h3>
-	  ${currentWeather.wind_direction_10m}°
-	  </h3>
-	  <h3>
+	  <h3 >
 	  ${currentWeather.wind_gusts_10m}
-		<p>
+		<p class="gusts-wind">
 		  <span> km/h</span> <br />
-		  wind
+		  Gusts
 		</p>
 	  </h3>
-	  <h3>
+	  <h3 class="border">
 	  ${currentWeather.wind_speed_10m}
-		<p>
+		<p class="speed-wind">
 		  <span> km/h</span> <br />
-		  wind
+		  Wind
 		</p>
 	  </h3>
 	</li>
   </ul>
-	  <img class="img-wind" src="assets/images/compass-3.png" alt="compass" />
-	</div>`;
+  <img class="img-wind" src="assets/images/compass-6.png" alt="compass" />
+  <div class="compass">
+	<p class="description-compass">  ${currentWeather.wind_direction_10m}°</p>
+  </div>`;
   } catch (error) {
     alert("An error occurred while fetching the weather details!");
   }
