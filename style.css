@@ -171,7 +171,7 @@ h1 {
 }
 
 .current-card i {
-  color: rgb(160, 129, 255);
+  color: rgb(79, 78, 83);
   font-size: 40px;
   justify-content: start;
   font-weight: lighter;
@@ -216,9 +216,9 @@ h1 {
 }
 
 .days-forecast h2 {
-  font-size: 20px;
-  color: rgb(237, 220, 220);
-  font-weight: lighter;
+  font-size: 15px;
+  color: rgb(79, 78, 83);
+  font-weight: bold;
 }
 
 .days-forecast h3 {
@@ -284,9 +284,9 @@ h1 {
 }
 
 .hourly-forecasts h2 {
-  font-size: 20px;
-  color: rgb(237, 220, 220);
-  font-weight: lighter;
+  font-size: 15px;
+  color: rgb(79, 78, 83);
+  font-weight: bold;
 }
 
 .card {
@@ -347,9 +347,9 @@ h1 {
 }
 
 .pressure-card h2 {
-  font-size: 20px;
-  color: rgb(237, 220, 220);
-  font-weight: lighter;
+  font-size: 15px;
+  color: rgb(79, 78, 83);
+  font-weight: bold;
   text-align: start;
   margin-top: 15px;
   margin-left: 15px;
@@ -372,9 +372,9 @@ h1 {
 }
 
 .wind-card h2 {
-  font-size: 20px;
-  color: rgb(237, 220, 220);
-  font-weight: lighter;
+  font-size: 15px;
+  color: rgb(79, 78, 83);
+  font-weight: bold;
   text-align: start;
   margin-top: 15px;
   margin-left: 15px;

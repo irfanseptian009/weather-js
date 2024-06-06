@@ -10,51 +10,16 @@
   <body>
     <div class="weather-input">
       <h3>Enter a City Name</h3>
-      <input class="city-input" type="text" placeholder="E.g., New York, London, Tokyo" />
+      <input
+        class="city-input"
+        type="text"
+        placeholder="E.g., Jakarta, Tokyo, Liverpool"
+      />
       <button class="search-btn">Search</button>
+
+      <!-- current weather -->
       <session class="weather-data">
-        <!-- current weather -->
-        <div class="current-weather">
-          <div class="details">
-            <h2>halo</h2>
-            <img src="" alt="" />
-            <h4 class="temperature">hao</h4>
-            <h4 class="description">halo</h4>
-            <div class="current-cards">
-              <div class="current-card">
-                <ul>
-                  <li>
-                    <h4>test</h4>
-                  </li>
-                </ul>
-              </div>
-              <div class="current-card">
-                <h3>precipitation</h3>
-                <ul>
-                  <li>
-                    <h4>test</h4>
-                  </li>
-                </ul>
-              </div>
-              <div class="current-card">
-                <h3>Interval</h3>
-                <ul>
-                  <li>
-                    <h4>test</h4>
-                  </li>
-                </ul>
-              </div>
-              <div class="current-card">
-                <h3>apparent temperature</h3>
-                <ul>
-                  <li>
-                    <h4>test</h4>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="current-weather"></div>
       </session>
     </div>
 
@@ -62,23 +27,13 @@
     <div class="container">
       <session class="days-forecast">
         <h2><i class="bx bxs-calendar"></i> 7-DAY FORECAST</h2>
-        <ul class="sevenDays-cards">
-          <li class="card">
-            <h6></h6>
-            <h6></h6>
-          </li>
-        </ul>
+        <ul class="sevenDays-cards"></ul>
       </session>
 
       <!-- hourly forecast -->
       <sessions class="hourly-forecasts">
         <h2><i class="bx bx-time-five"></i> HOURLY FORECAST 24 HOUR</h2>
-        <ul class="hourly-cards">
-          <li class="card">
-            <h6></h6>
-            <h6></h6>
-          </li>
-        </ul>
+        <ul class="hourly-cards"></ul>
       </sessions>
 
       <!-- Details weather -->
@@ -86,12 +41,6 @@
         <div class="detail-weather">
           <div class="pressure-card">
             <h2><i class="bx bxs-thermometer"></i>PRESSURE</h2>
-            <ul>
-              <li>
-                <h3></h3>
-                <h3></h3>
-              </li>
-            </ul>
           </div>
           <div class="wind-card">
             <h2><i class="bx bx-wind"></i> WIND</h2>

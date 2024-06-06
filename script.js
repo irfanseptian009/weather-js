@@ -44,20 +44,26 @@ async function getWeatherDetails(cityName, latitude, longitude) {
     let backgroundImage;
 
     switch (weatherCode) {
-      case 61: // Hujan ringan
-        backgroundImage = "url('/assets/images/hujan_ringan.jpg')";
+      case 82: // Hujan ringan
+        backgroundImage = "url('/assets/images/rainy.jpg')";
         break;
-      case 63: // Hujan sedang
-        backgroundImage = "url('/assets/images/hujan_sedang.jpg')";
+      case 85: // Hujan lebat
+        backgroundImage = "url('/assets/images/rainy.jpg')";
         break;
-      case 65: // Hujan lebat
-        backgroundImage = "url('/assets/images/hujan_lebat.jpg')";
+      case 86: // Hujan
+        backgroundImage = "url('/assets/images/rainy.jpg')";
         break;
-      case 66: // Hujan ringan beku
-        backgroundImage = "url('/assets/images/hujan_ringan_beku.jpg')";
+      case 96: // Hujan beku
+        backgroundImage = "url('/assets/images/rainy.jpg')";
         break;
-      case 67: // Hujan beku
-        backgroundImage = "url('/assets/images/hujan_beku.jpg')";
+      case 99: // Hujan beku
+        backgroundImage = "url('/assets/images/rainy.jpg')";
+        break;
+      case 45: // Hujan beku
+        backgroundImage = "url('/assets/images/fogy5.jpg')";
+        break;
+      case 48: // Hujan beku
+        backgroundImage = "url('/assets/images/fogy5.jpg')";
         break;
       case 0: // Clear sky
         backgroundImage = "url('/assets/images/weather-4.jpg')";
