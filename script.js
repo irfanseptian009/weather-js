@@ -44,6 +44,9 @@ async function getWeatherDetails(cityName, latitude, longitude) {
     let backgroundImage;
 
     switch (weatherCode) {
+      case 80: // Hujan ringan
+        backgroundImage = "url('assets/images/rainy.jpg')";
+        break;
       case 82: // Hujan ringan
         backgroundImage = "url('assets/images/rainy.jpg')";
         break;
