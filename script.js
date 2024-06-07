@@ -66,16 +66,16 @@ async function getWeatherDetails(cityName, latitude, longitude) {
         backgroundImage = "url('assets/images/fogy5.jpg')";
         break;
       case 0: // Clear sky
-        backgroundImage = "url('assets/images/weather-4.jpg')";
+        backgroundImage = "url(assets/images/weather-4.jpg)";
         break;
       case 1: // Mostly clear
-        backgroundImage = "url('assets/images/fix.jpg')";
+        backgroundImage = "url(assets/images/fix.jpg)";
         break;
       case 2: // Partly cloudy
-        backgroundImage = "url('assets/images/weather-3.jpg')";
+        backgroundImage = "url(assets/images/weather-3.jpg)";
         break;
       default:
-        backgroundImage = "url('assets/images/fix.jpg')";
+        backgroundImage = "url(assets/images/fix.jpg)";
         break;
     }
 

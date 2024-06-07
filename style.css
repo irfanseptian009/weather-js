@@ -35,7 +35,7 @@ h1 {
   border: 2px solid rgba(245, 244, 248, 0.2);
   display: flex;
   gap: 35px;
-  height: 780px;
+  height: 730px;
   width: auto;
   padding: 30px;
   border-radius: 15px;
@@ -43,7 +43,7 @@ h1 {
 }
 
 .weather-input {
-  height: 780px;
+  height: 730px;
   width: 550px;
   background: transparent;
   background: rgb(255, 253, 253, 0.1);
@@ -107,7 +107,7 @@ h1 {
   background: transparent;
   backdrop-filter: blur(50px);
   text-align: center;
-  height: 590px;
+  height: 540px;
   display: flex;
   justify-content: space-between;
   background: transparent;
@@ -244,7 +244,7 @@ h1 {
 }
 
 .hourly-forecasts {
-  height: 250px;
+  height: 240px;
   width: 780px;
   background: rgba(231, 218, 218, 0.1);
   backdrop-filter: blur(50px);
